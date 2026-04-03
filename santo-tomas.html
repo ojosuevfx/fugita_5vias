@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As 5 Vias de São Tomás — Curso Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d0d0d;
+  --bg2:       #130a04;
+  --card:      #1a0e06;
+  --card2:     #221108;
+  --orange:    #e8630a;
+  --orange-lt: #f07030;
+  --og-glow:   rgba(232,99,10,0.45);
+  --white:     #ffffff;
+  --muted:     rgba(255,255,255,0.65);
+  --dim:       rgba(255,255,255,0.35);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── Containers ── */
+.wrap    { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+.wrap-sm { max-width: 860px;  margin: 0 auto; padding: 0 48px; }
+
+/* ── Typography ── */
+.label-tag {
+  display: block;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 14px;
+  text-align: center;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 900; text-transform: uppercase;
+  line-height: 1.04; color: var(--white);
+  text-align: center; margin-bottom: 48px;
+}
+.section-title .og { color: var(--orange); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 20px 44px; border: none; cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; border-radius: 6px;
+  transition: transform .3s, box-shadow .3s;
+  position: relative; overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg,
+    transparent 20%,
+    rgba(255,255,255,0.72) 50%,
+    transparent 80%);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.btn:hover::after { left: 160%; }
+.btn:hover { transform: translateY(-3px); }
+
+.btn-orange {
+  background: linear-gradient(140deg, #d45a08 0%, #f07030 60%, #e8630a 100%);
+  color: #000;
+  box-shadow: 0 0 48px var(--og-glow), 0 0 120px rgba(232,99,10,0.15);
+}
+.btn-orange:hover { box-shadow: 0 0 80px var(--og-glow), 0 0 180px rgba(232,99,10,0.3); }
+
+.btn-green {
+  background: #25D366; color: #000;
+  box-shadow: 0 0 40px rgba(37,211,102,0.35);
+}
+.btn-green:hover { box-shadow: 0 0 80px rgba(37,211,102,0.6); }
+
+/* ── Image Placeholder ── */
+.ph {
+  background: #1c1008;
+  border: 2px dashed rgba(232,99,10,0.5);
+  border-radius: 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; color: var(--orange);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  text-align: center; padding: 16px;
+}
+.ph .ph-dims { font-size: 11px; font-weight: 400; opacity: 0.65; letter-spacing: 0; text-transform: none; }
+
+/* ════════════════════════════════════════
+   1. HERO
+════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center;
+}
+
+/* imagem de fundo */
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url('hero-bg.webp');
+  background-size: cover;
+  background-position: 25% top;
+  z-index: 0;
+}
+
+/* gradiente escurece da esquerda */
+#hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(10,7,4,0.97) 0%, rgba(10,7,4,0.82) 40%, rgba(10,7,4,0.30) 70%, transparent 100%),
+    linear-gradient(to top, rgba(10,7,4,0.70) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.hero-left {
+  position: relative; z-index: 2;
+  max-width: 600px;
+  padding: 120px 0 120px 80px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(232,99,10,0.1);
+  border: 1px solid rgba(232,99,10,0.28);
+  border-radius: 8px; padding: 10px 16px;
+  margin-bottom: 32px;
+}
+.hero-badge-icon {
+  width: 40px; height: 40px;
+  background: rgba(232,99,10,0.12);
+  border: 1px solid rgba(232,99,10,0.35);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-badge-text { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.hero-badge-text span { display: block; color: var(--orange); font-size: 11px; }
+
+#hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 900; text-transform: uppercase;
+  line-height: 0.95; letter-spacing: -1px;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7);
+}
+#hero h1 .og {
+  color: var(--orange);
+  text-shadow: 0 0 40px rgba(232,99,10,0.5);
+}
+
+.hero-sub {
+  font-size: 18px; color: var(--muted);
+  line-height: 1.75; max-width: 460px;
+  margin-bottom: 20px;
+}
+
+.hero-hook {
+  font-size: 15px; font-weight: 600;
+  color: var(--white);
+  background: rgba(232,99,10,0.08);
+  border-left: 3px solid var(--orange);
+  padding: 14px 18px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 40px;
+  max-width: 460px;
+  line-height: 1.6;
+}
+.hero-hook span { color: var(--orange); }
+.hero-right { display: none; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3.5px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block; width: 28px; height: 1px;
+  background: var(--orange); opacity: 0.6;
+}
+
+.hero-points {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 40px;
+}
+.hero-point {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 15px; color: var(--muted);
+}
+.hero-point svg { color: var(--orange); flex-shrink: 0; }
+
+/* ── Benefits strip ── */
+
+#benefits {
+  background: rgba(26,14,6,0.85);
+  border-top: 1px solid rgba(232,99,10,0.12);
+}
+#benefits .benefits-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 80px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.benefit-item {
+  padding: 40px 36px;
+  border-right: 1px solid rgba(232,99,10,0.08);
+}
+.benefit-item:last-child { border-right: none; }
+.benefit-icon { font-size: 26px; color: var(--orange); margin-bottom: 12px; display: block; }
+.benefit-item p { font-size: 16px; color: var(--muted); line-height: 1.55; }
+.benefit-item p strong { color: var(--white); }
+
+/* ════════════════════════════════════════
+   CONTEXTUALIZAÇÃO
+════════════════════════════════════════ */
+#contexto {
+  padding: 56px 0;
+  background: var(--bg);
+  text-align: center;
+}
+#contexto .label-tag {
+  font-size: 10px;
+  letter-spacing: 3.5px;
+  margin-bottom: 28px;
+}
+.contexto-body {
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.contexto-body p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.58);
+  margin-bottom: 0;
+}
+.contexto-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--orange);
+  margin: 24px auto;
+  opacity: 0.5;
+}
+.contexto-question {
+  font-size: 15px !important;
+  color: rgba(255,255,255,0.80) !important;
+  margin-bottom: 0 !important;
+}
+.contexto-question em {
+  font-style: normal;
+  color: var(--orange-lt);
+  font-weight: 600;
+}
+
+/* ════════════════════════════════════════
+   2. PROBLEMA
+════════════════════════════════════════ */
+#problema {
+  padding: 72px 0;
+  background: var(--bg);
+}
+.prob-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-bottom: 48px;
+}
+.prob-card {
+  background: var(--card);
+  border: 1px solid rgba(232,99,10,0.1);
+  border-left: 4px solid var(--orange);
+  border-radius: 8px;
+  padding: 28px 24px;
+  display: flex; align-items: flex-start; gap: 16px;
+  transition: border-color .2s;
+}
+.prob-card:hover { border-color: rgba(232,99,10,0.35); }
+.prob-x { flex-shrink: 0; font-size: 20px; margin-top: 1px; }
+.prob-card p { font-size: 16px; color: var(--muted); line-height: 1.5; }
+.prob-resultado {
+  background: rgba(232,99,10,0.08);
+  border: 1px solid rgba(232,99,10,0.2);
+  border-radius: 8px;
+  padding: 24px 28px;
+  font-size: 17px; color: var(--white); line-height: 1.6;
+  text-align: center;
+}
+.prob-resultado strong { color: var(--orange); }
+
+/* ════════════════════════════════════════
+   3. SOLUÇÃO
+════════════════════════════════════════ */
+#solucao {
+  padding: 72px 0;
+  background: radial-gradient(ellipse at 50% 110%, rgba(140,45,10,0.3) 0%, transparent 55%), var(--bg);
+}
+.sol-list {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 56px;
+}
+.sol-item {
+  background: var(--card);
+  border: 1px solid rgba(232,99,10,0.1);
+  border-radius: 8px;
+  padding: 28px 32px;
+  display: flex; align-items: flex-start; gap: 20px;
+  transition: border-color .2s, transform .2s;
+}
+.sol-item:hover { border-color: rgba(232,99,10,0.3); transform: translateX(6px); }
+.sol-num {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  background: var(--orange);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 900; color: #000;
+}
+.sol-item h4 {
+  font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px;
+}
+.sol-item p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+/* ════════════════════════════════════════
+   4. CONTEÚDO DO CURSO
+════════════════════════════════════════ */
+#conteudo {
+  padding: 72px 0;
+  background: #faf7f4;
+  color: #1a0e06;
+}
+#conteudo .label-tag { color: var(--orange); border-color: rgba(232,99,10,0.3); background: rgba(232,99,10,0.08); }
+#conteudo .section-title { color: #1a0e06; }
+.vias-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-bottom: 56px;
+}
+.via-card {
+  background: var(--card);
+  border: 1px solid rgba(232,99,10,0.1);
+  border-top: 3px solid var(--orange);
+  border-radius: 8px;
+  padding: 32px 28px;
+  transition: border-color .2s, transform .2s;
+}
+.via-card:hover { border-color: rgba(232,99,10,0.35); transform: translateY(-6px); }
+.via-card .via-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+}
+.via-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px; font-weight: 900; text-transform: uppercase;
+  color: var(--white); margin-bottom: 6px;
+}
+.via-card .via-sub {
+  font-size: 14px; color: var(--dim); margin-bottom: 20px;
+  border-bottom: 1px solid rgba(232,99,10,0.12);
+  padding-bottom: 16px;
+}
+.via-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.via-card li {
+  font-size: 14px; color: var(--muted); line-height: 1.5;
+  padding-left: 18px; position: relative;
+}
+.via-card li::before {
+  content: '';
+  position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px;
+  background: var(--orange); border-radius: 50%;
+}
+
+.via-card.bonus {
+  border-top-color: #25D366;
+  background: linear-gradient(160deg, #0d1a10 0%, var(--card) 100%);
+}
+.via-card.bonus .via-num { color: #25D366; }
+.via-card.bonus li::before { background: #25D366; }
+
+/* ════════════════════════════════════════
+   5. PROFESSORES
+════════════════════════════════════════ */
+#professores {
+  padding: 72px 0;
+  background: var(--bg);
+  color: var(--white);
+}
+.prof-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; margin-top: 0;
+}
+.prof-card {
+  border: 1px solid rgba(232,99,10,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  height: 560px;
+}
+.prof-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center top;
+}
+.prof-card:hover img {
+  transform: scale(1.06);
+}
+.prof-card:nth-child(1) img { animation: float-img 6s ease-in-out infinite; }
+.prof-card:nth-child(2) img { animation: float-img 6s ease-in-out infinite 3s; }
+.prof-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,7,4,1)    0%,
+    rgba(10,7,4,0.85) 30%,
+    rgba(10,7,4,0.1)  60%,
+    transparent       80%
+  );
+  pointer-events: none;
+}
+.prof-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 32px; z-index: 2;
+}
+.prof-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px; font-weight: 900; text-transform: uppercase;
+  color: var(--white); margin-bottom: 4px;
+}
+.prof-title {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+}
+.prof-bio { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.prof-bio strong { color: var(--white); }
+
+/* ════════════════════════════════════════
+   6. PRICING
+════════════════════════════════════════ */
+#pricing {
+  padding: 72px 0;
+  background: var(--bg);
+}
+.pricing-3col {
+  display: grid;
+  grid-template-columns: 1fr 380px 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* ── Left col ── */
+.pricing-left-col h2 {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 800; line-height: 1.2;
+  color: var(--white); margin-bottom: 16px;
+}
+.pricing-left-col h2 .og { color: var(--orange); }
+.pricing-left-col p {
+  font-size: 16px; color: var(--muted); line-height: 1.7;
+  max-width: 320px;
+}
+
+/* ── Center card ── */
+.pricing-center-card {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 44px 36px 36px;
+  text-align: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+.pricing-center-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, rgba(232,99,10,0.6) 50%, transparent 95%);
+}
+
+.pcc-logo {
+  margin-bottom: 28px;
+}
+.pcc-logo-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--white); line-height: 1;
+}
+.pcc-logo-title span { color: var(--orange); }
+
+.pcc-tudo-label {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5);
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 8px 20px; border-radius: 4px;
+  margin-bottom: 28px;
+}
+
+.pcc-price-row {
+  display: flex; align-items: baseline; justify-content: center; gap: 4px;
+  margin-bottom: 8px;
+}
+.pcc-prefix { font-size: 22px; font-weight: 700; color: var(--muted); }
+.pcc-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 82px; font-weight: 900; line-height: 1;
+  color: var(--orange);
+  text-shadow: 0 0 60px rgba(232,99,10,0.4);
+}
+.pcc-avista {
+  font-size: 14px; color: var(--dim);
+  margin-bottom: 28px;
+}
+
+.pcc-btn {
+  display: block; width: 100%;
+  background: var(--orange); color: #000;
+  font-size: 13px; font-weight: 800; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none;
+  padding: 18px 20px; border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 28px rgba(232,99,10,0.40);
+  transition: box-shadow .3s, transform .3s;
+  position: relative; overflow: hidden;
+}
+.pcc-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg,
+    transparent 20%,
+    rgba(255,255,255,0.72) 50%,
+    transparent 80%);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.pcc-btn:hover::after { left: 160%; }
+.pcc-btn:hover { box-shadow: 0 6px 60px rgba(232,99,10,0.75); transform: translateY(-2px); }
+
+.pcc-secure {
+  font-size: 12px; color: var(--dim); line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.pcc-payment-icons {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.pcc-pay-pill {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  color: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 5px 10px; border-radius: 4px;
+}
+
+/* ── Right col ── */
+.pricing-right-col ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.pricing-right-col li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 15px; color: var(--muted);
+}
+.pricing-right-col li:last-child { border-bottom: none; }
+.pr-dot {
+  width: 6px; height: 6px; flex-shrink: 0;
+  border-radius: 50%; background: var(--orange);
+  margin-top: 6px;
+  box-shadow: 0 0 6px rgba(232,99,10,0.5);
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+/* mobile */
+@media(max-width:960px) {
+  .pricing-3col { grid-template-columns: 1fr; gap: 40px; }
+  .pricing-center-card { max-width: 380px; margin: 0 auto; }
+  .pricing-left-col p { max-width: 100%; }
+}
+
+/* ════════════════════════════════════════
+   7. GARANTIA
+════════════════════════════════════════ */
+#garantia {
+  margin: 56px 48px 0;
+  border-radius: 24px;
+  padding: 0;
+  overflow: hidden;
+  background: #0f0603;
+  border: 1px solid rgba(232,99,10,0.25);
+  box-shadow: 0 0 80px rgba(232,99,10,0.10);
+  position: relative;
+}
+#garantia::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(232,99,10,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.garantia-inner {
+  position: relative;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 0; align-items: stretch;
+}
+.garantia-icon-col {
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 56px;
+  border-right: 1px solid rgba(232,99,10,0.12);
+}
+.garantia-icon {
+  width: 120px; height: 120px;
+  background: rgba(232,99,10,0.12);
+  border: 2px solid rgba(232,99,10,0.30);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.garantia-text-col {
+  padding: 56px 60px;
+}
+.garantia-text-col .gtag {
+  display: inline-block;
+  font-size: 11px; font-weight: 800; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 14px;
+}
+.garantia-text-col h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 900; text-transform: uppercase;
+  line-height: 1.04; color: var(--white); margin-bottom: 14px;
+}
+.garantia-text-col h2 span { color: var(--orange); }
+.garantia-text-col p { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 540px; }
+.garantia-badge-col {
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 56px;
+  border-left: 1px solid rgba(232,99,10,0.12);
+}
+.garantia-badge {
+  text-align: center;
+}
+.garantia-badge .g-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 80px; font-weight: 900; line-height: 1;
+  color: var(--orange);
+  text-shadow: 0 0 60px rgba(232,99,10,0.5);
+}
+.garantia-badge .g-dias {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+}
+.garantia-badge .g-label {
+  font-size: 12px; color: var(--dim);
+}
+
+/* ════════════════════════════════════════
+   8. FAQ + CONTATO
+════════════════════════════════════════ */
+#faq {
+  padding: 72px 0 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+.faq-inner {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 72px; align-items: start;
+}
+
+/* esquerda */
+.faq-contact-col h2 {
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 800; line-height: 1.2;
+  color: var(--white); margin-bottom: 12px;
+}
+.faq-contact-col h2 .og { color: var(--orange); }
+.faq-contact-col > p {
+  font-size: 15px; color: var(--muted); line-height: 1.7;
+  margin-bottom: 32px;
+}
+.contact-card {
+  display: flex; align-items: center; gap: 18px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.contact-card:hover { border-color: rgba(232,99,10,0.4); background: #1c1208; }
+.contact-card-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: rgba(232,99,10,0.10);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-card-icon svg { color: var(--orange); }
+.contact-card-text strong { display: block; font-size: 15px; color: var(--white); margin-bottom: 2px; }
+.contact-card-text span { font-size: 13px; color: var(--dim); }
+.faq-phone-img {
+  margin-top: 40px;
+  display: flex; justify-content: center;
+}
+.faq-phone-img img {
+  width: 100%; width: 100%; max-width: 500px;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+  display: block;
+  margin-bottom: -80px;
+}
+
+/* direita */
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+
+.acc {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px; overflow: hidden;
+  transition: border-color .3s, box-shadow .3s;
+}
+.acc.is-open {
+  border-color: rgba(232,99,10,0.35);
+  box-shadow: 0 4px 32px rgba(232,99,10,0.07);
+}
+.acc-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 20px 24px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  background: none; border: none; text-align: left;
+  color: var(--white); gap: 16px;
+  transition: color .25s;
+  font-family: 'Barlow', sans-serif;
+}
+.acc.is-open .acc-summary { color: var(--orange); }
+.acc-arrow {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  transition: background .25s, color .25s, transform .35s cubic-bezier(.4,0,.2,1);
+}
+.acc.is-open .acc-arrow {
+  background: rgba(232,99,10,0.15);
+  color: var(--orange);
+  transform: rotate(180deg);
+}
+.acc-body-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.acc-body {
+  padding: 0 24px 20px;
+  padding-top: 16px;
+  font-size: 15px; color: var(--muted); line-height: 1.7;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.acc-body strong { color: var(--white); }
+
+@media(max-width:960px) {
+  .faq-inner { grid-template-columns: 1fr; gap: 48px; }
+  .faq-phone-img { display: none; }
+}
+
+
+
+/* ── Footer ── */
+footer {
+  margin-top: 100px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 48px 80px;
+}
+.foot-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.foot-brand { display: flex; flex-direction: column; gap: 6px; }
+.foot-brand-name {
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 1px; color: var(--dim);
+}
+.foot-brand-name span { color: var(--dim); }
+.foot-brand-copy { font-size: 12px; color: var(--dim); }
+.foot-links {
+  display: flex; gap: 28px; flex-wrap: wrap; justify-content: center;
+}
+.foot-links a {
+  font-size: 13px; color: var(--dim); text-decoration: none;
+  transition: color .2s;
+}
+.foot-links a:hover { color: var(--white); }
+.foot-dev {
+  font-size: 12px; color: var(--dim); text-align: right;
+}
+.foot-dev a {
+  color: var(--orange); text-decoration: none; font-weight: 600;
+  transition: opacity .2s;
+}
+.foot-dev a:hover { opacity: 0.75; }
+@media(max-width:760px) {
+  footer { padding: 40px 24px; }
+  .foot-inner { flex-direction: column; align-items: center; text-align: center; }
+  .foot-dev { text-align: center; }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .wrap, .wrap-sm { padding: 0 24px; }
+
+  #hero { min-height: 100vh; align-items: flex-end; }
+  #hero::before { background-position: center center; }
+  #hero::after {
+    background:
+      linear-gradient(to top, rgba(10,7,4,1) 0%, rgba(10,7,4,0.85) 40%, rgba(10,7,4,0.2) 75%, transparent 100%),
+      linear-gradient(to right, rgba(10,7,4,0.5) 0%, transparent 100%);
+  }
+  .hero-left {
+    padding: 0 24px 56px;
+    text-align: center;
+    max-width: 100%;
+  }
+  .hero-badge { margin: 0 auto 24px; }
+  .hero-sub, .hero-hook { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-hook { border-left: none; border-top: 3px solid var(--orange); border-radius: 6px; text-align: left; }
+  #benefits .benefits-inner { padding: 0 24px; grid-template-columns: 1fr; }
+  .benefit-item { border-right: none; border-bottom: 1px solid rgba(232,99,10,0.08); padding: 28px 0; }
+  .benefit-item:last-child { border-bottom: none; }
+
+  .prob-grid { grid-template-columns: 1fr; }
+
+  .vias-grid { grid-template-columns: 1fr 1fr; }
+
+  .prof-grid { grid-template-columns: 1fr; }
+
+  .pricing-items-grid { grid-template-columns: 1fr; }
+  .pi-item:nth-child(odd) { padding-right: 0; border-right: none; }
+  .pi-item:nth-child(even) { padding-left: 0; }
+  .pi-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .pi-item:last-child { border-bottom: none; }
+  .pricing-card-top { padding: 36px 28px 32px; }
+  .pricing-card-bottom { flex-direction: column; padding: 36px 28px 44px; gap: 28px; }
+  .pricing-cta-side { width: 100%; }
+  .pricing-amount { font-size: 72px; }
+
+  #garantia { margin: 60px 16px 0; }
+  .garantia-inner { grid-template-columns: 1fr; }
+  .garantia-icon-col, .garantia-badge-col { display: none; }
+  .garantia-text-col { padding: 48px 32px; text-align: center; }
+
+  .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 600px) {
+  .vias-grid { grid-template-columns: 1fr; }
+  .price-amount { font-size: 60px; }
+}
+
+/* ════════════════════════════════════════
+   TICKER
+════════════════════════════════════════ */
+#ticker {
+  background: var(--bg);
+  padding: 20px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(232,99,10,0.10);
+  border-bottom: 1px solid rgba(232,99,10,0.10);
+}
+.ticker-row {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  margin-bottom: 12px;
+}
+.ticker-row:last-child { margin-bottom: 0; }
+.ticker-row.left  { animation: ticker-left  28s linear infinite; }
+.ticker-row.right { animation: ticker-right 28s linear infinite; }
+@keyframes ticker-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ticker-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.ticker-pill {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid rgba(232,99,10,0.30);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+  background: rgba(232,99,10,0.04);
+}
+.ticker-pill svg { opacity: 0.5; }
+
+/* ════════════════════════════════════════
+   TICKER
+════════════════════════════════════════ */
+#ticker {
+  background: var(--bg);
+  padding: 20px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(232,99,10,0.10);
+  border-bottom: 1px solid rgba(232,99,10,0.10);
+}
+.ticker-row {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  margin-bottom: 12px;
+}
+.ticker-row:last-child { margin-bottom: 0; }
+.ticker-row.left  { animation: ticker-left  28s linear infinite; }
+.ticker-row.right { animation: ticker-right 28s linear infinite; }
+@keyframes ticker-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ticker-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.ticker-pill {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid rgba(232,99,10,0.30);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+  background: rgba(232,99,10,0.04);
+}
+.ticker-pill svg { opacity: 0.5; }
+
+/* ── Scroll reveal ── */
+.prob-card, .sol-item, .via-card, .prof-card, .pi-item,
+.pricing-list li, .decision-list li, .acc, .contact-card, .benefit-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.prob-card.revealed, .sol-item.revealed, .via-card.revealed, .prof-card.revealed,
+.pi-item.revealed, .pricing-list.revealed li, .decision-list.revealed li,
+.acc.revealed, .contact-card.revealed, .benefit-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Card hover lifts ── */
+.prob-card, .sol-item, .via-card, .contact-card {
+  transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.prob-card:hover, .sol-item:hover, .via-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(232,99,10,0.12);
+  border-color: rgba(232,99,10,0.35);
+}
+
+/* ── Hero stagger ── */
+.hero-left > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.hero-left.loaded > *:nth-child(1) { transition-delay: .05s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(2) { transition-delay: .18s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(3) { transition-delay: .32s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(4) { transition-delay: .46s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(5) { transition-delay: .58s; opacity: 1; transform: none; }
+
+/* ── Pricing card entrance ── */
+.pricing-center-card {
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.pricing-center-card.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* price glow pulse */
+.pcc-price {
+  animation: price-glow 3s ease-in-out infinite;
+}
+@keyframes price-glow {
+  0%, 100% { text-shadow: 0 0 40px rgba(232,99,10,0.35); }
+  50%       { text-shadow: 0 0 80px rgba(232,99,10,0.75), 0 0 120px rgba(232,99,10,0.25); }
+}
+
+/* ── Button pulse ── */
+.btn-orange {
+  animation: btn-breathe 3s ease-in-out infinite;
+}
+@keyframes btn-breathe {
+  0%, 100% { box-shadow: 0 0 24px rgba(232,99,10,0.35); }
+  50%       { box-shadow: 0 0 44px rgba(232,99,10,0.65); }
+}
+
+/* ── Section title fade in ── */
+.section-title, .label-tag {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section-title.revealed, .label-tag.revealed { opacity: 1; transform: translateY(0); }
+
+/* ── Ticker pause on hover ── */
+#ticker:hover .ticker-row { animation-play-state: paused; }
+
+@keyframes hero-zoom {
+  from { background-size: 110%; }
+  to   { background-size: 120%; }
+}
+@keyframes float-img {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%       { transform: scale(1.025) translateY(-6px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     1. HERO
+════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-left">
+
+    <p class="hero-eyebrow">O curso que faltava no Brasil</p>
+
+    <h1>
+      Domine as<br>
+      5 Vias de<br>
+      <span class="og">Santo Tomás</span>
+    </h1>
+
+    <p class="hero-sub">
+      Aprenda a defender a existência de Deus com o rigor filosófico
+      da Escolástica clássica — lendo as fontes originais traduzidas do latim.
+    </p>
+
+    <a href="#pricing" class="btn btn-orange">Garantir Acesso Agora</a>
+  </div>
+
+
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TICKER
+════════════════════════════════════════ -->
+<div id="ticker">
+  <div class="ticker-row left">
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Filosofia</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Apologética</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Escolástica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Teologia Natural</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Metafísica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Argumento Cosmológico</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Santo Tomás de Aquino</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Suma Teológica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Filosofia</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Apologética</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Escolástica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Teologia Natural</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Metafísica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Argumento Cosmológico</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Santo Tomás de Aquino</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Suma Teológica</span>
+  </div>
+  <div class="ticker-row right">
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Cinco Vias</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Existência de Deus</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Lógica Aristotélica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Ética Clássica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Argumento Ontológico</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Fé e Razão</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Filosofia Medieval</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Refutação ao Ateísmo</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Cinco Vias</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Existência de Deus</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Lógica Aristotélica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Ética Clássica</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Argumento Ontológico</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Fé e Razão</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Filosofia Medieval</span>
+    <span class="ticker-pill"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Refutação ao Ateísmo</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     2. PROBLEMA
+════════════════════════════════════════ -->
+<section id="problema">
+  <div class="wrap">
+    <span class="label-tag">O problema real</span>
+    <h2 class="section-title">
+      Por que a maioria não consegue<br>
+      <span class="og">defender as 5 Vias de verdade</span>
+    </h2>
+
+    <div class="prob-grid">
+      <div class="prob-card">
+        <span class="prob-x">✗</span>
+        <p>As 5 Vias são ensinadas de forma simplificada e apologética, sem rigor filosófico</p>
+      </div>
+      <div class="prob-card">
+        <span class="prob-x">✗</span>
+        <p>Falta compreensão profunda dos fundamentos metafísicos clássicos que sustentam cada argumento</p>
+      </div>
+      <div class="prob-card">
+        <span class="prob-x">✗</span>
+        <p>Ninguém explica como os grandes comentadores responderam às críticas ao longo dos séculos</p>
+      </div>
+      <div class="prob-card">
+        <span class="prob-x">✗</span>
+        <p>Você fica indefeso contra objeções de filósofos analíticos como Bertrand Russell e seus herdeiros</p>
+      </div>
+    </div>
+
+    <div class="prob-resultado">
+      <strong>Resultado?</strong> Você conhece os argumentos, mas não consegue defendê-los com profundidade quando alguém realmente questiona.
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     3. SOLUÇÃO
+════════════════════════════════════════ -->
+<section id="solucao">
+  <div class="wrap">
+    <span class="label-tag">A solução</span>
+    <h2 class="section-title">
+      O curso que vai te transformar<br>
+      em um <span class="og">defensor da Escolástica</span>
+    </h2>
+
+    <div class="sol-list">
+      <div class="sol-item">
+        <div class="sol-num">1</div>
+        <div>
+          <h4>Textos originais traduzidos do latim</h4>
+          <p>Material autêntico dos maiores comentadores escolásticos: Cardeal Caetano, Domingo Báñez, Del Prado e Garrigou-Lagrange — direto da fonte, sem intermediários.</p>
+        </div>
+      </div>
+      <div class="sol-item">
+        <div class="sol-num">2</div>
+        <div>
+          <h4>Compreensão metafísica profunda</h4>
+          <p>Você entenderá os princípios ontológicos por trás de cada Via, não apenas memorizar argumentos. A diferença entre quem entende e quem repete é total.</p>
+        </div>
+      </div>
+      <div class="sol-item">
+        <div class="sol-num">3</div>
+        <div>
+          <h4>Refutação de críticos contemporâneos</h4>
+          <p>Aula dedicada a responder objeções de filósofos analíticos com rigor técnico — usando os próprios fundamentos da metafísica clássica contra eles.</p>
+        </div>
+      </div>
+      <div class="sol-item">
+        <div class="sol-num">4</div>
+        <div>
+          <h4>Dois professores especialistas</h4>
+          <p>Matheus Fugita (pesquisador de metafísica) e Carlos Alberto (tradutor de escolástica clássica) — a dupla mais qualificada para este conteúdo no Brasil.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="#pricing" class="btn btn-orange">Quero entrar para o curso agora!</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     4. CONTEÚDO DO CURSO
+════════════════════════════════════════ -->
+<section id="conteudo">
+  <div class="wrap">
+    <span class="label-tag">O que você vai aprender</span>
+    <h2 class="section-title">
+      Domine cada uma das<br>
+      <span class="og">5 Vias em profundidade</span>
+    </h2>
+
+    <div class="vias-grid">
+      <div class="via-card">
+        <div class="via-num">Primeira Via</div>
+        <h3>O Movimento</h3>
+        <p class="via-sub">O Argumento do Movimento</p>
+        <ul>
+          <li>Por que "tudo que é movido, é movido por outro" é mais sofisticado do que parece</li>
+          <li>A impossibilidade real da regressão infinita em causas essencialmente ordenadas</li>
+          <li>Como responder aos críticos que dizem que a física moderna refuta esse argumento</li>
+        </ul>
+      </div>
+
+      <div class="via-card">
+        <div class="via-num">Segunda Via</div>
+        <h3>A Causalidade</h3>
+        <p class="via-sub">O Argumento da Causalidade</p>
+        <ul>
+          <li>Por que parte da potência ativa e não da passiva — um detalhe que muda tudo</li>
+          <li>Causalidade como sustentadora (não apenas geradora) do ser</li>
+          <li>Por que esse argumento é menos dependente de observações empíricas</li>
+        </ul>
+      </div>
+
+      <div class="via-card">
+        <div class="via-num">Terceira Via</div>
+        <h3>A Contingência</h3>
+        <p class="via-sub">O Argumento da Contingência</p>
+        <ul>
+          <li>A diferença real entre contingente e necessário na metafísica clássica</li>
+          <li>Os princípios de ontologia modal que sustentam o argumento</li>
+          <li>Como evitar as falácias que filósofos contemporâneos atribuem ao argumento</li>
+        </ul>
+      </div>
+
+      <div class="via-card">
+        <div class="via-num">Quarta Via</div>
+        <h3>As Perfeições</h3>
+        <p class="via-sub">O Argumento das Perfeições</p>
+        <ul>
+          <li>O léxico preciso das perfeições: predicamentais, transcendentais, analógicas</li>
+          <li>Erros comuns dos filósofos contemporâneos sobre transcendentais</li>
+          <li>Por que a analogia é a chave para compreender a Via das Perfeições</li>
+        </ul>
+      </div>
+
+      <div class="via-card">
+        <div class="via-num">Quinta Via</div>
+        <h3>A Finalidade</h3>
+        <p class="via-sub">O Argumento da Finalidade</p>
+        <ul>
+          <li>Diferenças críticas entre ordenação material e formal</li>
+          <li>A regularidade da natureza como fundamento da ciência</li>
+          <li>Finalidade intrínseca vs. extrínseca: por que isso importa</li>
+        </ul>
+      </div>
+
+      <div class="via-card bonus">
+        <div class="via-num" style="color:#25D366;">Bônus Exclusivo</div>
+        <h3>Tira-Dúvidas</h3>
+        <p class="via-sub">Aula ao vivo com os professores</p>
+        <ul>
+          <li>Aula exclusiva para analisar objeções contemporâneas em tempo real</li>
+          <li>Respostas diretas com Matheus Fugita sobre os críticos mais relevantes</li>
+          <li>Debate focado em filósofos analíticos — com argumentos técnicos e precisos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="#pricing" class="btn btn-orange">Quero dominar as 5 Vias agora!</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     5. PROFESSORES
+════════════════════════════════════════ -->
+<section id="professores">
+  <div class="wrap">
+    <span class="label-tag">Quem está ensinando</span>
+    <h2 class="section-title">
+      Os especialistas que vão<br>
+      te guiar em <span class="og">cada passo</span>
+    </h2>
+
+    <div class="prof-grid">
+      <div class="prof-card">
+        <img src="foto-fugita.webp" alt="Matheus Fugita" style="object-position: center 5%;">
+        <div class="prof-info">
+          <div class="prof-name">Matheus Fugita</div>
+          <div class="prof-title">Pesquisador de Metafísica</div>
+          <p class="prof-bio">
+            Professor e pesquisador de filosofia com <strong>mais de uma década</strong> de atuação no debate intelectual.
+            Dedicou-se ao estudo sistemático de Aristóteles, Tomás de Aquino, Suárez, Kant e Quine.
+            Produtor de artigos, cursos e materiais sobre metafísica, ética e teoria do conhecimento.
+            <strong>Pioneiro em trazer a Escolástica clássica para o público brasileiro.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="prof-card">
+        <img src="foto_carlos.webp" alt="Carlos Alberto">
+        <div class="prof-info">
+          <div class="prof-name">Carlos Alberto</div>
+          <div class="prof-title">Tradutor de Escolástica Clássica</div>
+          <p class="prof-bio">
+            Professor de filosofia escolástica e tradutor direto do latim com <strong>10+ anos</strong> de dedicação
+            à tradição clássica. Participou de revisões de obras filosóficas e ministrou cursos sobre
+            metafísica escolástica para formação teológica.
+            <strong>Um dos pioneiros na redescoberta de autores como Raimundo Lúlio</strong>
+            e outros esquecidos na filosofia moderna.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     6. PRICING
+════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="pricing-3col">
+
+      <!-- esquerda -->
+      <div class="pricing-left-col">
+        <h2>Quanto você<br>precisará <span class="og">Investir</span></h2>
+        <p>
+          Para dominar a filosofia escolástica clássica com os maiores especialistas do Brasil.
+          Acesso imediato após a confirmação do pagamento.
+        </p>
+      </div>
+
+      <!-- card central -->
+      <div class="pricing-center-card">
+
+        <div class="pcc-logo">
+          <div class="pcc-logo-title"<span> ACESSE AGORA!</span></div>
+        </div>
+
+        <div class="pcc-tudo-label">Tudo isso por apenas</div>
+
+        <div class="pcc-price-row">
+          <span class="pcc-prefix">R$</span>
+          <span class="pcc-price" data-count="297" data-suffix="">0</span>
+        </div>
+        <p class="pcc-avista">ou em parcelas no cartão</p>
+
+        <a href="https://pay.kiwify.com.br/7C5knsC" target="_blank" class="pcc-btn">
+          Garantir Minha Vaga Agora!
+        </a>
+
+        <p class="pcc-secure">
+          Compra 100% segura! Receba o acesso imediatamente<br>após a confirmação do pagamento.
+        </p>
+
+        <div class="pcc-payment-icons">
+          <img src="PAGAMENTO_KIWIFY.webp" alt="Pagamento seguro via Kiwify" style="display:block; margin:0 auto; max-width:220px; height:auto; opacity:0.7;">
+        </div>
+
+      </div>
+
+      <!-- direita: lista -->
+      <div class="pricing-right-col">
+        <ul>
+          <li><span class="pr-dot"></span>+15 horas de vídeo-aulas das 5 Vias</li>
+          <li><span class="pr-dot"></span>Textos inéditos traduzidos do latim</li>
+          <li><span class="pr-dot"></span>Caetano, Báñez, Del Prado, Garrigou-Lagrange</li>
+          <li><span class="pr-dot"></span>Aula ao vivo de tira-dúvidas</li>
+          <li><span class="pr-dot"></span>Suporte direto com os professores</li>
+          <li><span class="pr-dot"></span>Atualizações futuras do curso</li>
+          <li><span class="pr-dot"></span>Acesso completo por 365 dias</li>
+          <li><span class="pr-dot"></span>Garantia de 7 dias sem burocracia</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     7. GARANTIA
+════════════════════════════════════════ -->
+<div id="garantia">
+  <div class="garantia-inner">
+
+    <!-- ícone -->
+    <div class="garantia-icon-col">
+      <div class="garantia-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none">
+          <path d="M32 4 L56 14 L56 32 C56 46 44 57 32 60 C20 57 8 46 8 32 L8 14 Z" fill="rgba(232,99,10,0.15)" stroke="rgba(232,99,10,0.8)" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="22,32 29,39 43,25" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- texto -->
+    <div class="garantia-text-col">
+      <span class="gtag">Risco zero para você</span>
+      <h2>Garantia de <span>7 dias</span><br>reembolso imediato</h2>
+      <p>
+        Confiamos 100% na qualidade deste curso. Você tem <strong style="color:var(--white);">7 dias</strong> para assistir às aulas
+        e explorar o conteúdo. Se decidir que não é para você, solicitamos o reembolso total
+        — sem perguntas, sem burocracia.
+      </p>
+    </div>
+
+    <!-- badge -->
+    <div class="garantia-badge-col">
+      <div class="garantia-badge">
+        <div class="g-num">7</div>
+        <div class="g-dias">Dias</div>
+        <div class="g-label">de garantia total</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     8. FAQ + CONTATO
+════════════════════════════════════════ -->
+<section id="faq" style="margin-top:80px;">
+  <div class="wrap">
+    <div class="faq-inner">
+
+      <!-- esquerda: contato -->
+      <div class="faq-contact-col">
+        <h2>Ficou com alguma <span class="og">dúvida?</span></h2>
+        <p>Confira as respostas das perguntas frequentes ou entre em contato conosco:</p>
+
+        <a href="https://api.whatsapp.com/send/?phone=559291110708&text=Ol%C3%A1%2C+Matheus%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+o+seu+curso%2C+A+forma%C3%A7%C3%A3o+do+conhecimento.&type=phone_number&app_absent=0" target="_blank" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="color:var(--orange);">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.554 4.1 1.523 5.824L0 24l6.344-1.501A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.371l-.36-.214-3.732.882.933-3.648-.235-.374A9.785 9.785 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+            </svg>
+          </div>
+          <div class="contact-card-text">
+            <strong>Atendimento via Whatsapp</strong>
+            <span>Fale diretamente com a nossa equipe</span>
+          </div>
+        </a>
+
+        <a href="mailto:contato@filosofiaescolastica.com.br" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-card-text">
+            <strong>Atendimento por E-mail</strong>
+            <span>contato@filosofiaescolastica.com.br</span>
+          </div>
+        </a>
+
+
+      </div>
+
+      <!-- direita: FAQ -->
+      <div class="faq-list">
+        <div class="acc is-open">
+          <button class="acc-summary">Preciso ter formação em filosofia para acompanhar? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Não.</strong> O curso começa do zero, explicando cada conceito passo a passo. O único requisito é disposição para <strong>pensar com honestidade e rigor</strong> — o resto você construirá conosco.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">É um curso introdutório ou avançado? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Ambos.</strong> Começamos com uma introdução clara, mas evoluímos para um nível de profundidade <strong>raramente explorado no Brasil</strong>. Você vai dominar não apenas as 5 Vias, mas os fundamentos metafísicos que as sustentam.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">As 5 Vias não foram "refutadas" por filósofos modernos? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Não.</strong> Essa narrativa vem de versões <strong>simplificadas</strong> dos argumentos. Aqui você aprenderá como os grandes comentadores escolásticos responderam — e por que muitas críticas atacam <strong>caricaturas</strong> das Vias, não os argumentos reais.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">O curso refuta críticas contemporâneas? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Sim, completamente.</strong> Há uma aula dedicada exclusivamente às objeções de filósofos analíticos como Bertrand Russell. Você aprenderá a respondê-los com rigor técnico usando os fundamentos da metafísica clássica.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">Vou apenas repetir argumentos ou realmente entender? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Você vai entender de verdade.</strong> Não é memorização. Você conhecerá os fundamentos de cada argumento e aprenderá como <strong>aplicar esses conceitos em novos contextos</strong>.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">Por quanto tempo terei acesso ao curso? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>365 dias completos.</strong> Você assiste no seu ritmo, quantas vezes quiser. Depois desse período, pode renovar com preço especial de membro.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">E se não gostar do curso? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Você tem 7 dias de garantia incondicional.</strong> Se decidir que não é para você, reembolso total — sem perguntas, sem burocracia. Você corre zero risco.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand-copy">© 2026 Matheus Fugita · Todos os direitos reservados</div>
+    <div class="foot-dev">
+      Desenvolvido por <a href="https://www.instagram.com/ojosueribeiro/" target="_blank">Josué Ribeiro 🔥</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Particles + Animations -->
+<canvas id="particles-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.45;"></canvas>
+
+<script>
+// ── Particles ──────────────────────────────────────────────────────────
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.3,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    alpha: Math.random() * 0.5 + 0.1
+  };
+}
+
+for (let i = 0; i < 110; i++) particles.push(createParticle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(232,99,10,${p.alpha})`;
+    ctx.fill();
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  });
+  // draw faint connection lines
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(232,99,10,${0.06 * (1 - dist/120)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ── Hero stagger on load ───────────────────────────────────────────────
+window.addEventListener('load', () => {
+  const heroLeft = document.querySelector('.hero-left');
+  if (heroLeft) setTimeout(() => heroLeft.classList.add('loaded'), 80);
+});
+
+// ── Scroll reveal ──────────────────────────────────────────────────────
+const revealEls = document.querySelectorAll(
+  '.prob-card, .sol-item, .via-card, .prof-card, .pi-item, .pricing-list li, .decision-list li, .acc, .contact-card, .benefit-item, .section-title, .label-tag, .pricing-center-card'
+);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('revealed');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 6) * 60}ms`;
+  observer.observe(el);
+});
+
+// ── Counter animation ──────────────────────────────────────────────────
+function animateCount(el, end, suffix='') {
+  let start = 0;
+  const dur = 1400;
+  const step = (ts) => {
+    if (!start) start = ts;
+    const prog = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - prog, 3);
+    el.textContent = Math.floor(ease * end) + suffix;
+    if (prog < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const counters = document.querySelectorAll('[data-count]');
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(e.target, +e.target.dataset.count, e.target.dataset.suffix || '');
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObs.observe(c));
+
+// ── FAQ accordion ─────────────────────────────────────────────────────
+function initAccordion() {
+  const items = document.querySelectorAll('.acc');
+  items.forEach(item => {
+    const wrap = item.querySelector('.acc-body-wrap');
+    const body = item.querySelector('.acc-body');
+    // set initial height for open item
+    if (item.classList.contains('is-open')) {
+      wrap.style.maxHeight = body.scrollHeight + 'px';
+    }
+    const btn = item.querySelector('.acc-summary');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      // close all
+      items.forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.acc-body-wrap').style.maxHeight = '0';
+      });
+      // open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('is-open');
+        wrap.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+}
+initAccordion();
+
+// ── Cursor glow ────────────────────────────────────────────────────────
+const glow = document.createElement('div');
+glow.id = 'cursor-glow';
+glow.style.cssText = 'position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle, rgba(232,99,10,0.07) 0%, transparent 70%);transform:translate(-50%,-50%);transition:opacity .3s;';
+document.body.appendChild(glow);
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top  = e.clientY + 'px';
+});
+</script>
+
+<script>
+/* ── Smooth scroll com easing ────────────────────────────────── */
+(function () {
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function smoothScrollTo(target, duration) {
+    const start = window.scrollY;
+    const end = target.getBoundingClientRect().top + start;
+    const distance = end - start;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, start + distance * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const id = this.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      smoothScrollTo(target, 1100);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

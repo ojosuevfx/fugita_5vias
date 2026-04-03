@@ -59,8 +59,23 @@ body {
   font-size: 14px; font-weight: 800;
   letter-spacing: 2px; text-transform: uppercase;
   text-decoration: none; border-radius: 6px;
-  transition: transform .25s, box-shadow .25s;
+  transition: transform .3s, box-shadow .3s;
+  position: relative; overflow: hidden;
 }
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg,
+    transparent 20%,
+    rgba(255,255,255,0.72) 50%,
+    transparent 80%);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.btn:hover::after { left: 160%; }
 .btn:hover { transform: translateY(-3px); }
 
 .btn-orange {
@@ -68,13 +83,13 @@ body {
   color: #000;
   box-shadow: 0 0 48px var(--og-glow), 0 0 120px rgba(232,99,10,0.15);
 }
-.btn-orange:hover { box-shadow: 0 0 64px var(--og-glow), 0 0 160px rgba(232,99,10,0.2); }
+.btn-orange:hover { box-shadow: 0 0 80px var(--og-glow), 0 0 180px rgba(232,99,10,0.3); }
 
 .btn-green {
   background: #25D366; color: #000;
   box-shadow: 0 0 40px rgba(37,211,102,0.35);
 }
-.btn-green:hover { box-shadow: 0 0 64px rgba(37,211,102,0.55); }
+.btn-green:hover { box-shadow: 0 0 80px rgba(37,211,102,0.6); }
 
 /* ── Image Placeholder ── */
 .ph {
@@ -104,7 +119,7 @@ body {
 #hero::before {
   content: '';
   position: absolute; inset: 0;
-  background-image: url('hero-bg.jpg.png');
+  background-image: url('hero-bg.webp');
   background-size: cover;
   background-position: 25% top;
   z-index: 0;
@@ -219,10 +234,56 @@ body {
 .benefit-item p strong { color: var(--white); }
 
 /* ════════════════════════════════════════
+   CONTEXTUALIZAÇÃO
+════════════════════════════════════════ */
+#contexto {
+  padding: 56px 0;
+  background: var(--bg);
+  text-align: center;
+}
+#contexto .label-tag {
+  font-size: 10px;
+  letter-spacing: 3.5px;
+  margin-bottom: 28px;
+}
+.contexto-body {
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.contexto-body p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.58);
+  margin-bottom: 0;
+}
+.contexto-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--orange);
+  margin: 24px auto;
+  opacity: 0.5;
+}
+.contexto-question {
+  font-size: 15px !important;
+  color: rgba(255,255,255,0.80) !important;
+  margin-bottom: 0 !important;
+}
+.contexto-question em {
+  font-style: normal;
+  color: var(--orange-lt);
+  font-weight: 600;
+}
+
+/* ════════════════════════════════════════
    2. PROBLEMA
 ════════════════════════════════════════ */
 #problema {
-  padding: 100px 0;
+  padding: 72px 0;
   background: var(--bg);
 }
 .prob-grid {
@@ -255,7 +316,7 @@ body {
    3. SOLUÇÃO
 ════════════════════════════════════════ */
 #solucao {
-  padding: 100px 0;
+  padding: 72px 0;
   background: radial-gradient(ellipse at 50% 110%, rgba(140,45,10,0.3) 0%, transparent 55%), var(--bg);
 }
 .sol-list {
@@ -289,7 +350,7 @@ body {
    4. CONTEÚDO DO CURSO
 ════════════════════════════════════════ */
 #conteudo {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #faf7f4;
   color: #1a0e06;
 }
@@ -346,7 +407,7 @@ body {
    5. PROFESSORES
 ════════════════════════════════════════ */
 #professores {
-  padding: 100px 0;
+  padding: 72px 0;
   background: var(--bg);
   color: var(--white);
 }
@@ -405,7 +466,7 @@ body {
    6. PRICING
 ════════════════════════════════════════ */
 #pricing {
-  padding: 100px 0;
+  padding: 72px 0;
   background: var(--bg);
 }
 .pricing-3col {
@@ -491,9 +552,24 @@ body {
   padding: 18px 20px; border-radius: 8px;
   margin-bottom: 16px;
   box-shadow: 0 4px 28px rgba(232,99,10,0.40);
-  transition: box-shadow .2s, transform .15s;
+  transition: box-shadow .3s, transform .3s;
+  position: relative; overflow: hidden;
 }
-.pcc-btn:hover { box-shadow: 0 6px 40px rgba(232,99,10,0.60); transform: translateY(-1px); }
+.pcc-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg,
+    transparent 20%,
+    rgba(255,255,255,0.72) 50%,
+    transparent 80%);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.pcc-btn:hover::after { left: 160%; }
+.pcc-btn:hover { box-shadow: 0 6px 60px rgba(232,99,10,0.75); transform: translateY(-2px); }
 
 .pcc-secure {
   font-size: 12px; color: var(--dim); line-height: 1.6;
@@ -544,7 +620,7 @@ body {
    7. GARANTIA
 ════════════════════════════════════════ */
 #garantia {
-  margin: 80px 48px 0;
+  margin: 56px 48px 0;
   border-radius: 24px;
   padding: 0;
   overflow: hidden;
@@ -621,7 +697,7 @@ body {
    8. FAQ + CONTATO
 ════════════════════════════════════════ */
 #faq {
-  padding: 100px 0 0;
+  padding: 72px 0 0;
   background: var(--bg);
   overflow: hidden;
 }
@@ -675,34 +751,49 @@ body {
 /* direita */
 .faq-list { display: flex; flex-direction: column; gap: 8px; }
 
-details.acc {
+.acc {
   background: #161616;
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 10px; overflow: hidden;
+  transition: border-color .3s, box-shadow .3s;
 }
-details.acc[open] { border-color: rgba(232,99,10,0.30); }
-details.acc summary {
+.acc.is-open {
+  border-color: rgba(232,99,10,0.35);
+  box-shadow: 0 4px 32px rgba(232,99,10,0.07);
+}
+.acc-summary {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 24px;
+  width: 100%; padding: 20px 24px;
   font-size: 15px; font-weight: 600; cursor: pointer;
-  list-style: none; color: var(--white); gap: 16px;
+  background: none; border: none; text-align: left;
+  color: var(--white); gap: 16px;
+  transition: color .25s;
+  font-family: 'Barlow', sans-serif;
 }
-details.acc summary::-webkit-details-marker { display: none; }
-details.acc[open] summary { color: var(--orange); }
+.acc.is-open .acc-summary { color: var(--orange); }
 .acc-arrow {
   width: 28px; height: 28px; flex-shrink: 0;
   border-radius: 50%;
   background: rgba(255,255,255,0.05);
   display: flex; align-items: center; justify-content: center;
-  color: var(--white); font-size: 16px; line-height: 1;
-  transition: background .2s;
+  color: var(--white);
+  transition: background .25s, color .25s, transform .35s cubic-bezier(.4,0,.2,1);
 }
-details.acc[open] .acc-arrow { background: rgba(232,99,10,0.15); color: var(--orange); }
+.acc.is-open .acc-arrow {
+  background: rgba(232,99,10,0.15);
+  color: var(--orange);
+  transform: rotate(180deg);
+}
+.acc-body-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
 .acc-body {
   padding: 0 24px 20px;
+  padding-top: 16px;
   font-size: 15px; color: var(--muted); line-height: 1.7;
   border-top: 1px solid rgba(255,255,255,0.05);
-  padding-top: 16px;
 }
 .acc-body strong { color: var(--white); }
 
@@ -897,6 +988,37 @@ footer {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(232,99,10,0.12);
   border-color: rgba(232,99,10,0.35);
+}
+
+/* ── Hero stagger ── */
+.hero-left > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.hero-left.loaded > *:nth-child(1) { transition-delay: .05s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(2) { transition-delay: .18s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(3) { transition-delay: .32s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(4) { transition-delay: .46s; opacity: 1; transform: none; }
+.hero-left.loaded > *:nth-child(5) { transition-delay: .58s; opacity: 1; transform: none; }
+
+/* ── Pricing card entrance ── */
+.pricing-center-card {
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.pricing-center-card.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* price glow pulse */
+.pcc-price {
+  animation: price-glow 3s ease-in-out infinite;
+}
+@keyframes price-glow {
+  0%, 100% { text-shadow: 0 0 40px rgba(232,99,10,0.35); }
+  50%       { text-shadow: 0 0 80px rgba(232,99,10,0.75), 0 0 120px rgba(232,99,10,0.25); }
 }
 
 /* ── Button pulse ── */
@@ -1184,7 +1306,7 @@ footer {
 
     <div class="prof-grid">
       <div class="prof-card">
-        <img src="foto-fugita.jpg.png" alt="Matheus Fugita" style="object-position: center 5%;">
+        <img src="foto-fugita.webp" alt="Matheus Fugita" style="object-position: center 5%;">
         <div class="prof-info">
           <div class="prof-name">Matheus Fugita</div>
           <div class="prof-title">Pesquisador de Metafísica</div>
@@ -1198,7 +1320,7 @@ footer {
       </div>
 
       <div class="prof-card">
-        <img src="foto_carlos.jpg" alt="Carlos Alberto">
+        <img src="foto_carlos.webp" alt="Carlos Alberto">
         <div class="prof-info">
           <div class="prof-name">Carlos Alberto</div>
           <div class="prof-title">Tradutor de Escolástica Clássica</div>
@@ -1227,7 +1349,7 @@ footer {
       <div class="pricing-left-col">
         <h2>Quanto você<br>precisará <span class="og">Investir</span></h2>
         <p>
-          Domine a filosofia escolástica clássica com os maiores especialistas do Brasil.
+          Para dominar a filosofia escolástica clássica com os maiores especialistas do Brasil.
           Acesso imediato após a confirmação do pagamento.
         </p>
       </div>
@@ -1243,7 +1365,7 @@ footer {
 
         <div class="pcc-price-row">
           <span class="pcc-prefix">R$</span>
-          <span class="pcc-price">297</span>
+          <span class="pcc-price" data-count="297" data-suffix="">0</span>
         </div>
         <p class="pcc-avista">ou em parcelas no cartão</p>
 
@@ -1256,7 +1378,7 @@ footer {
         </p>
 
         <div class="pcc-payment-icons">
-          <img src="PAGAMENTO_KIWIFY.PNG" alt="Pagamento seguro via Kiwify" style="display:block; margin:0 auto; max-width:220px; height:auto; opacity:0.7;">
+          <img src="PAGAMENTO_KIWIFY.webp" alt="Pagamento seguro via Kiwify" style="display:block; margin:0 auto; max-width:220px; height:auto; opacity:0.7;">
         </div>
 
       </div>
@@ -1363,48 +1485,34 @@ footer {
 
       <!-- direita: FAQ -->
       <div class="faq-list">
-        <details class="acc" open>
-          <summary>Preciso ter formação em filosofia para acompanhar? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>Não.</strong> O curso começa do zero, explicando cada conceito passo a passo. O único requisito é disposição para <strong>pensar com honestidade e rigor</strong> — o resto você construirá conosco.
-          </div>
-        </details>
-        <details class="acc">
-          <summary>É um curso introdutório ou avançado? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>Ambos.</strong> Começamos com uma introdução clara, mas evoluímos para um nível de profundidade <strong>raramente explorado no Brasil</strong>. Você vai dominar não apenas as 5 Vias, mas os fundamentos metafísicos que as sustentam.
-          </div>
-        </details>
-        <details class="acc">
-          <summary>As 5 Vias não foram "refutadas" por filósofos modernos? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>Não.</strong> Essa narrativa vem de versões <strong>simplificadas</strong> dos argumentos. Aqui você aprenderá como os grandes comentadores escolásticos responderam — e por que muitas críticas atacam <strong>caricaturas</strong> das Vias, não os argumentos reais.
-          </div>
-        </details>
-        <details class="acc">
-          <summary>O curso refuta críticas contemporâneas? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>Sim, completamente.</strong> Há uma aula dedicada exclusivamente às objeções de filósofos analíticos como Bertrand Russell. Você aprenderá a respondê-los com rigor técnico usando os fundamentos da metafísica clássica.
-          </div>
-        </details>
-        <details class="acc">
-          <summary>Vou apenas repetir argumentos ou realmente entender? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>Você vai entender de verdade.</strong> Não é memorização. Você conhecerá os fundamentos de cada argumento e aprenderá como <strong>aplicar esses conceitos em novos contextos</strong>.
-          </div>
-        </details>
-        <details class="acc">
-          <summary>Por quanto tempo terei acesso ao curso? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>365 dias completos.</strong> Você assiste no seu ritmo, quantas vezes quiser. Depois desse período, pode renovar com preço especial de membro.
-          </div>
-        </details>
-        <details class="acc">
-          <summary>E se não gostar do curso? <span class="acc-arrow">&#8964;</span></summary>
-          <div class="acc-body">
-            <strong>Você tem 7 dias de garantia incondicional.</strong> Se decidir que não é para você, reembolso total — sem perguntas, sem burocracia. Você corre zero risco.
-          </div>
-        </details>
+        <div class="acc is-open">
+          <button class="acc-summary">Preciso ter formação em filosofia para acompanhar? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Não.</strong> O curso começa do zero, explicando cada conceito passo a passo. O único requisito é disposição para <strong>pensar com honestidade e rigor</strong> — o resto você construirá conosco.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">É um curso introdutório ou avançado? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Ambos.</strong> Começamos com uma introdução clara, mas evoluímos para um nível de profundidade <strong>raramente explorado no Brasil</strong>. Você vai dominar não apenas as 5 Vias, mas os fundamentos metafísicos que as sustentam.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">As 5 Vias não foram "refutadas" por filósofos modernos? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Não.</strong> Essa narrativa vem de versões <strong>simplificadas</strong> dos argumentos. Aqui você aprenderá como os grandes comentadores escolásticos responderam — e por que muitas críticas atacam <strong>caricaturas</strong> das Vias, não os argumentos reais.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">O curso refuta críticas contemporâneas? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Sim, completamente.</strong> Há uma aula dedicada exclusivamente às objeções de filósofos analíticos como Bertrand Russell. Você aprenderá a respondê-los com rigor técnico usando os fundamentos da metafísica clássica.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">Vou apenas repetir argumentos ou realmente entender? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Você vai entender de verdade.</strong> Não é memorização. Você conhecerá os fundamentos de cada argumento e aprenderá como <strong>aplicar esses conceitos em novos contextos</strong>.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">Por quanto tempo terei acesso ao curso? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>365 dias completos.</strong> Você assiste no seu ritmo, quantas vezes quiser. Depois desse período, pode renovar com preço especial de membro.</div></div>
+        </div>
+        <div class="acc">
+          <button class="acc-summary">E se não gostar do curso? <span class="acc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-body-wrap"><div class="acc-body"><strong>Você tem 7 dias de garantia incondicional.</strong> Se decidir que não é para você, reembolso total — sem perguntas, sem burocracia. Você corre zero risco.</div></div>
+        </div>
       </div>
 
     </div>
@@ -1489,9 +1597,15 @@ function drawParticles() {
 }
 drawParticles();
 
+// ── Hero stagger on load ───────────────────────────────────────────────
+window.addEventListener('load', () => {
+  const heroLeft = document.querySelector('.hero-left');
+  if (heroLeft) setTimeout(() => heroLeft.classList.add('loaded'), 80);
+});
+
 // ── Scroll reveal ──────────────────────────────────────────────────────
 const revealEls = document.querySelectorAll(
-  '.prob-card, .sol-item, .via-card, .prof-card, .pi-item, .pricing-list li, .decision-list li, .acc, .contact-card, .benefit-item, .section-title, .label-tag'
+  '.prob-card, .sol-item, .via-card, .prof-card, .pi-item, .pricing-list li, .decision-list li, .acc, .contact-card, .benefit-item, .section-title, .label-tag, .pricing-center-card'
 );
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1530,6 +1644,34 @@ const counterObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 counters.forEach(c => counterObs.observe(c));
 
+// ── FAQ accordion ─────────────────────────────────────────────────────
+function initAccordion() {
+  const items = document.querySelectorAll('.acc');
+  items.forEach(item => {
+    const wrap = item.querySelector('.acc-body-wrap');
+    const body = item.querySelector('.acc-body');
+    // set initial height for open item
+    if (item.classList.contains('is-open')) {
+      wrap.style.maxHeight = body.scrollHeight + 'px';
+    }
+    const btn = item.querySelector('.acc-summary');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      // close all
+      items.forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.acc-body-wrap').style.maxHeight = '0';
+      });
+      // open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('is-open');
+        wrap.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+}
+initAccordion();
+
 // ── Cursor glow ────────────────────────────────────────────────────────
 const glow = document.createElement('div');
 glow.id = 'cursor-glow';
@@ -1539,6 +1681,42 @@ document.addEventListener('mousemove', e => {
   glow.style.left = e.clientX + 'px';
   glow.style.top  = e.clientY + 'px';
 });
+</script>
+
+<script>
+/* ── Smooth scroll com easing ────────────────────────────────── */
+(function () {
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function smoothScrollTo(target, duration) {
+    const start = window.scrollY;
+    const end = target.getBoundingClientRect().top + start;
+    const distance = end - start;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, start + distance * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const id = this.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      smoothScrollTo(target, 1100);
+    });
+  });
+})();
 </script>
 
 </body>
